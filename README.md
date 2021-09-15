@@ -13,7 +13,7 @@ python3 setup.py bdist_wheel
 `DynamixelPort` class implements handler for serial port used by given motor. Each motor need pin to switch direction on half duplex UART used to communicate with motor. The pin is switching direction of three state buffer. As buffer you can use SN74LS241N. The diagram below shows how it can be connected:
 
 <div style="text-align:center">
-<img src="./assets/circuit.svg" alt="drawing"/>
+<img src="./assets/circuit.png" alt="drawing"/>
 </div>
 
 
@@ -21,6 +21,9 @@ python3 setup.py bdist_wheel
 ### Setting/Reading memory cells directly
 This library provides getters and setters for each memory cell. Accessing data stored in cells is done as follows:
 ```python
+# setting single byte of EEPROM
+motor.eeprom.temperature_limit.value = [80]
+
 # getting single byte stored in EEPROM
 motor.eeprom.temperature_limit.value
 ```
@@ -28,9 +31,6 @@ Output:
 
     >>> [70]
 ```python
-# setting single byte of EEPROM
-motor.eeprom.temperature_limit.value = [80]
-
 # setting two bytes of RAM
 motor.ram.moving_speed.value = [0x01, 0x00]
 
