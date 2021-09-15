@@ -26,20 +26,15 @@ motor.eeprom.temperature_limit.value = [80]
 
 # getting single byte stored in EEPROM
 motor.eeprom.temperature_limit.value
-```
-Output:
+>>> [70] # Output
 
-    >>> [70]
-```python
 # setting two bytes of RAM
 motor.ram.moving_speed.value = [0x01, 0x00]
 
 # getting two bytes from RAM
 motor.ram.moving_speed.value
+>>> [1, 0] # Output
 ```
-Output:
-
-    >>> [1, 0]
 
 If you are setting two or more bytes first value in array will be the highest byte and last value will be the lowest byte.
 
