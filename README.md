@@ -26,7 +26,7 @@ motor.eeprom.temperature_limit.value = [80]
 
 # getting single byte stored in EEPROM
 motor.eeprom.temperature_limit.value
->>> [70] # Output
+>>> [80] # Output
 
 # setting two bytes of RAM
 motor.ram.moving_speed.value = [0x01, 0x00]
