@@ -2,10 +2,16 @@
 Python library for Dynamixel AX12 servos with Raspberry Pi. It is also compatible with Jetson Nano.
 
 
+
+## Requirements
+
+This library uses [RPi.GPIO](https://pypi.org/project/RPi.GPIO/) for Raspberry pi and [Jetson.GPIO](https://github.com/NVIDIA/jetson-gpio) for Jetson Nano.
+
 ## Installation
+
 In order to build library run:
 ```bash
-python3 setup.py bdist_wheel
+python3 setup.py install
 ```
 
 ## DynamixelPort class and bus connection
@@ -64,7 +70,7 @@ Each motor has it's own `Motor` object. You can also define Motor at address `0x
 ### Set motor ID
 By default motors have ID set to `0x01`. This example will set motor's ID to `0x02`.
 ``` python
-from rpi_dynamixel_ax_12a import DynamixelPort, Motor
+from rpi_dynamixel_ax12a import DynamixelPort, Motor
 
 port_handler = DynamixelPort(port_id='/dev/ttyAMA0', pin=18)
 motor = Motor(port_handler, 0x01)
@@ -77,7 +83,7 @@ motor.action()
 ### Three motors: position, velocity, torque control
 
 ``` python
-from rpi_dynamixel_ax_12a import DynamixelPort, Motor
+from rpi_dynamixel_ax12a import DynamixelPort, Motor
 
 port_handler = DynamixelPort(port_id='/dev/ttyAMA0', pin=18)
 motors = [Motor(port_handler, 0x01),

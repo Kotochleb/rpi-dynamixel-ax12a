@@ -18,7 +18,7 @@ class Motor:
                 self._uart_handler.write(
                     packet_id=self._motor_id,
                     length=0x04,
-                    instruction=Motor.Instruction.RAED,
+                    instruction=Motor.Instruction.READ,
                     params=[self.address, self.length]
                 )
                 self._value = self._uart_handler.read(
@@ -46,7 +46,7 @@ class Motor:
 
     class Instruction:
         PING = 0x01
-        RAED = 0x02
+        READ = 0x02
         WRITE = 0x03
         REG_WRITE = 0x04
         ACTION = 0x05
@@ -92,10 +92,10 @@ class Motor:
             self._uart_handler = uart_handler
             self.torque_enable = Motor.MemoryCell(24, 1, 0, 'rw', self._motor_id, self._uart_handler)
             self.led = Motor.MemoryCell(25, 1, 0, 'rw', self._motor_id, self._uart_handler)
-            self.cw_compilance_margin = Motor.MemoryCell(26, 1, 1, 'rw', self._motor_id, self._uart_handler)
-            self.ccw_compilance_margin = Motor.MemoryCell(27, 1, 1, 'rw', self._motor_id, self._uart_handler)
-            self.cw_compilance_slope = Motor.MemoryCell(28, 1, 32, 'rw', self._motor_id, self._uart_handler)
-            self.ccw_compilance_slope = Motor.MemoryCell(29, 1, 32, 'rw', self._motor_id, self._uart_handler)
+            self.cw_compliance_margin = Motor.MemoryCell(26, 1, 1, 'rw', self._motor_id, self._uart_handler)
+            self.ccw_compliance_margin = Motor.MemoryCell(27, 1, 1, 'rw', self._motor_id, self._uart_handler)
+            self.cw_compliance_slope = Motor.MemoryCell(28, 1, 32, 'rw', self._motor_id, self._uart_handler)
+            self.ccw_compliance_slope = Motor.MemoryCell(29, 1, 32, 'rw', self._motor_id, self._uart_handler)
             self.goal_position = Motor.MemoryCell(30, 2, None, 'rw', self._motor_id, self._uart_handler)
             self.moving_speed = Motor.MemoryCell(32, 2, None, 'rw', self._motor_id, self._uart_handler)
             self.torque_limit = Motor.MemoryCell(34, 2, None, 'rw', self._motor_id, self._uart_handler)

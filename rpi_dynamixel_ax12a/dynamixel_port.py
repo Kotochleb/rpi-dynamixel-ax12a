@@ -1,9 +1,22 @@
 import time
 from serial import Serial
-import Jetson.GPIO as GPIO
+
+try:
+    import RPi.GPIO as GPIO
+except ImportError:
+    pass
+
+try:
+    import Jetson.GPIO as GPIO
+except ImportError:
+    pass
+
+try:
+    GPIO.getmode()
+except NameError:
+    raise ImportError('Couldn\'t find matching GPIO library')
 
 
-from .motor import Motor as Motor
 
 class DynamixelPort:
     PROTOCOL_SLEEP = 0.00003
